@@ -1,10 +1,11 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { GlobalService } from '../global.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -17,7 +18,7 @@ export class HeaderComponent {
   uname = '';
   pass = '';
   ngAfterViwInit() {}
-  constructor(public globalService: GlobalService) {}
+  constructor(public globalService: GlobalService, private router: Router) {}
   toggleSidebar() {
     this.sideBarOpen = !this.sideBarOpen;
   }
@@ -41,6 +42,7 @@ export class HeaderComponent {
     localStorage.removeItem('uname');
     this.open = false;
     alert('Logged Out successfully');
+    window.location.reload();
   }
   formSubmit(event: any) {
     event.preventDefault();
@@ -55,5 +57,6 @@ export class HeaderComponent {
     this.username = uname;
     this.login = true;
     this.open = false;
+    this.router.navigate(['']);
   }
 }
