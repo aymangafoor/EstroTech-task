@@ -2,6 +2,11 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+:root {
+    --dark: '#1E1E1E';
+    --white: '#ffffff'
+}
+
 h1,
 h2,
 h3,
@@ -18,4 +23,16 @@ body {
 
 button {
     cursor: pointer;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }

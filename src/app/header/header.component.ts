@@ -32,6 +32,10 @@ export class HeaderComponent {
     this.globalService.setTheme(
       this.globalService.theme === 'Dark' ? 'Light' : 'Dark'
     );
+    if (typeof document !== 'undefined') {
+      document.body.style.backgroundColor =
+        this.globalService.theme === 'Dark' ? '#1E1E1E' : 'white';
+    }
   }
   logout() {
     localStorage.removeItem('uname');

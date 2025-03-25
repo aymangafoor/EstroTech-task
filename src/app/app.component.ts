@@ -8,10 +8,18 @@ import { GlobalService } from './global.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnChanges {
+export class AppComponent {
   title = 'big-data-charts';
-  ngOnChanges(changes: any) {
-    // changes.prop contains the old and the new value...
-    console.log('changes are', changes);
+  constructor(private globalService: GlobalService) {
+    if (typeof document !== 'undefined') {
+      this.changeTheme();
+    }
+  }
+  changeTheme() {
+    if (this.globalService.theme == 'Dark') {
+      document.body.style.backgroundColor = '#1E1E1E';
+    } else {
+      document.body.style.backgroundColor = 'white';
+    }
   }
 }

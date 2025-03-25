@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="flex gap-x-[1.33%] gap-y-4">
+    <div class="flex flex-wrap gap-x-[1.33%] gap-y-4">
       @for(item of devices; track item.deviceName){
       <a
         routerLink="/devices/{{ item.deviceName.toLowerCase() }}"

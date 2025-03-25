@@ -1,5 +1,8 @@
 <div
-  class="bg-[#1E1E1E] px-[8%] h-[80px] border-[#FFFFFF2D] border-b-2 flex flex-col justify-center"
+  class="px-[8%] h-[80px] border-b-2 flex flex-col justify-center"
+  [class]="
+    globalService.theme == 'Dark' ? 'border-[#FFFFFF2D]' : 'border-[#1E1E1E]'
+  "
 >
   <div class="flex justify-between">
     <div class="flex items-center gap-x-2">
@@ -11,22 +14,48 @@
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          @if(globalService.theme==="Dark"){
           <path
             d="M0 10V8.33333H16V10H0ZM0 5.83333V4.16667H16V5.83333H0ZM0 1.66667V0H16V1.66667H0Z"
             fill="#EEEEEE"
           />
+          } @else{
+          <path
+            d="M0 10V8.33333H16V10H0ZM0 5.83333V4.16667H16V5.83333H0ZM0 1.66667V0H16V1.66667H0Z"
+            fill="#1E1E1E"
+          />
+          }
         </svg>
       </button>
 
-      <h2 class="text-sm text-white">Estro Tech</h2>
+      <h2
+        class="text-sm"
+        [class]="
+          globalService.theme == 'Dark' ? 'text-white' : 'text-[#1E1E1E]'
+        "
+      >
+        Estro Tech
+      </h2>
     </div>
     <div class="relative">
       <button
         (click)="profileBox()"
-        class="relative w-8 h-8 rounded-2xl border border-[#FFFFFF2D] flex items-center justify-center"
+        class="relative w-8 h-8 rounded-2xl border flex items-center justify-center"
+        [class]="
+          globalService.theme == 'Dark'
+            ? 'border-[#FFFFFF2D]'
+            : 'border-[#1E1E1E]'
+        "
       >
         @if(login){
-        <p class="text-sm text-[#EEEEEE] font-bold">{{ username.charAt(0) }}</p>
+        <p
+          class="text-sm font-bold"
+          [class]="
+            globalService.theme == 'Dark' ? 'text-[#EEEEEE]' : 'text-[#1E1E1E]'
+          "
+        >
+          {{ username.charAt(0) }}
+        </p>
         } @else {
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -115,13 +144,19 @@
   </div>
   @if(sideBarOpen){
   <div
-    class="side-bar bg-[#1E1E1E] h-full animation-[animateleft 0.4s] w-[240px] fixed top-0 left-0"
+    class="side-bar h-full animation-[animateleft 0.4s] w-[240px] fixed top-0 left-0"
+    [class]="
+      globalService.theme == 'Dark'
+        ? 'text-white bg-[#1E1E1E]'
+        : 'text-[#1E1E1E] bg-white'
+    "
   >
-    <button class="text-white absolute top-2 right-2" (click)="toggleSidebar()">
-      x
-    </button>
+    <button class="absolute top-2 right-2" (click)="toggleSidebar()">x</button>
     <h4
-      class="text-sm text-white font-bold py-4 mb-5 border-b-1 border-white px-6"
+      class="text-sm font-bold py-4 mb-5 border-b-1 px-6"
+      [class]="
+        globalService.theme == 'Dark' ? 'border-white' : 'border-[#1E1E1E]'
+      "
     >
       Estro Tech
     </h4>
@@ -131,7 +166,7 @@
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
     >
-      <div class="text-white text-sm w-full mb-4 px-6">{{ item.label }}</div>
+      <div class="text-sm w-full mb-4 px-6">{{ item.label }}</div>
     </a>
     }
   </div>
@@ -141,7 +176,8 @@
   >
     <button
       (click)="profileBox()"
-      class="flex justify-end ml-auto text-sm text-white mb-2"
+      class="flex justify-end ml-auto text-sm mb-2"
+      [class]="globalService.theme == 'Dark' ? 'text-white' : 'text-[#1E1E1E]'"
     >
       x
     </button>
