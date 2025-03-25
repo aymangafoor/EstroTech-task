@@ -1,0 +1,16 @@
+<div class="flex gap-x-16 items-center mb-2.5">
+  <p class="text-sm text-white font-medium">Uptime</p>
+  <div class="flex gap-x-6 items-center">
+    <div class="flex gap-x-1 items-center" (click)="setVisible(0)">
+      <span class="h-2 w-2 rounded-sm bg-[#00A44B]"></span>
+      <p class="text-xs text-[#8C8B93]">Online</p>
+    </div>
+    <button class="flex gap-x-1 items-center" (click)="setVisible(1)">
+      <span class="h-2 w-2 rounded-sm bg-[#DD2D24]"></span>
+      <p class="text-xs text-[#8C8B93]">Offline</p>
+    </button>
+  </div>
+</div>
+<div class="h-18">
+  <canvas id="uptimeChart"></canvas>
+</div>

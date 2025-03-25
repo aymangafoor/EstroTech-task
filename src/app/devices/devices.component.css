@@ -1,0 +1,34 @@
+/* Hide default radio button */
+input[type="radio"] {
+    appearance: none;
+    /* Remove default styles */
+    width: 14px;
+    height: 14px;
+    border: 2px solid #FAFAFA;
+    /* White border */
+    border-radius: 50%;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Create the inner dot */
+input[type="radio"]::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: #1E1E1E;
+    /* Inner dot color */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    /* Initially hidden */
+}
+
+/* Show inner dot when checked */
+input[type="radio"]:checked::after {
+    display: block;
+}

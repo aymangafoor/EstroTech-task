@@ -1,0 +1,28 @@
+/* progress-chart.component.scss */
+.chart-wrapper {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.chart-container {
+    position: relative;
+    height: 100%;
+}
+
+.percentage-label {
+    position: absolute;
+    top: -20px;
+    color: #00A44B;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.left-label {
+    left: 10px;
+}
+
+.right-label {
+    right: 10px;
+    color: #FFFFFF;
+}

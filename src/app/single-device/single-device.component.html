@@ -1,0 +1,139 @@
+<div class="bg-[#1E1E1E] h-full">
+  <app-header></app-header>
+  <div class="px-[8%]">
+    <h3 class="my-10 flex gap-x-[14px] items-center">
+      <span class="text-sm text-[#FFFFFF80]">Devices</span>
+      <svg
+        width="5"
+        height="8"
+        viewBox="0 0 5 8"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3.67187 3.97917L0.401041 0.708333C0.328124 0.635417 0.290798 0.544271 0.289062 0.434896C0.287326 0.325521 0.324652 0.230903 0.401041 0.151042C0.47743 0.0711806 0.57118 0.03125 0.682291 0.03125C0.793402 0.03125 0.888888 0.0711806 0.96875 0.151042L4.38542 3.5625C4.44444 3.62153 4.48698 3.68663 4.51302 3.75781C4.53906 3.82899 4.55208 3.90278 4.55208 3.97917C4.55208 4.05556 4.53906 4.12934 4.51302 4.20052C4.48698 4.2717 4.44444 4.33681 4.38542 4.39583L0.963541 7.81771C0.88368 7.89757 0.789062 7.93576 0.679687 7.93229C0.570312 7.92882 0.47743 7.88715 0.401041 7.80729C0.324652 7.7309 0.28559 7.63889 0.283854 7.53125C0.282118 7.42361 0.32118 7.32986 0.401041 7.25L3.67187 3.97917Z"
+          fill="white"
+          fill-opacity="0.5"
+        />
+      </svg>
+      <span class="text-sm font-semibold text-white">{{
+        this.data.deviceName
+      }}</span>
+    </h3>
+    <div class="flex gap-x-16 gap-y-8.5 flex-wrap">
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Name</p>
+        <p class="text-lg text-white font-medium">{{ data.deviceName }}</p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Status</p>
+        <div class="flex gap-x-2">
+          <p
+            class="text-xs h-5 px-1 rounded-sm"
+            [class]="
+              data.status == 'Online'
+                ? 'text-[#00A44B] bg-[#00A44B33]'
+                : 'text-[#DD2D24] bg-[#DD2D2433]'
+            "
+          >
+            {{ data.status }}
+          </p>
+          <p class="text-xs bg-[#26A2E933] text-[#26A2E9] h-5 px-1 rounded-sm">
+            Deployed
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">USB</p>
+        <p
+          class="text-xs h-5 px-1 rounded-sm"
+          [class]="
+            data.usb.status == 'Connected'
+              ? 'text-[#00A44B] bg-[#00A44B33]'
+              : 'text-[#DD2D24] bg-[#DD2D2433]'
+          "
+        >
+          {{ data.usb.status }}
+        </p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Store</p>
+        <p class="text-lg text-white font-medium">{{ data.storeName }}</p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">FMCG</p>
+        <p class="text-lg text-white font-medium">{{ data.fmcg }}</p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">User</p>
+        <p class="text-lg text-white font-medium">{{ data.user }}</p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Location</p>
+        <p class="text-lg text-white font-medium">
+          {{ data.location.city }}, {{ data.location.state }}
+        </p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Battery Temperature</p>
+        <p class="text-lg text-white font-medium">
+          {{ data.hw_data.battery.temperature }}
+        </p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Battery</p>
+        <p class="text-lg text-white font-medium">
+          {{ data.hw_data.battery.percentage }}
+        </p>
+      </div>
+      <div class="flex flex-col gap-y-2">
+        <p class="text-sm text-[#FFFFFFBF] font-medium">Network</p>
+        <p class="text-lg text-white font-medium">
+          {{ data.hw_data.sim.operator }}
+        </p>
+      </div>
+    </div>
+    <div class="graph-details mt-10">
+      <div class="tabs flex gap-x-4 border-b border-[#FFFFFF2D]">
+        <button
+          class="pb-3.5 px-2 text-sm text-white font-semibold"
+          [class]="tab == 'analytics' ? 'border-b border-[#26A2E9]' : ''"
+          (click)="changetab('analytics')"
+        >
+          Analytics
+        </button>
+      </div>
+      @if(tab==='analytics'){
+      <div>
+        <div class="flex">
+          <div
+            class="ml-auto border border-[#FFFFFF2D] justify-end mt-4 p-1.5 text-white rounded-lg"
+          >
+            <input
+              type="date"
+              [value]="{date}"
+              class="outline-0 focus:outline-0"
+            />
+          </div>
+        </div>
+        <div class="flex justify-between my-4">
+          <div class="w-3/4 border border-[#FFFFFF2B] rounded-xl px-6 py-6">
+            <app-chart></app-chart>
+          </div>
+          <div class="w-[24%] border border-[#FFFFFF2B] rounded-xl px-6 py-6">
+            <app-engagement-metrics
+              label1="Engagement Rate"
+              label2="Pre-Engagement Rate"
+              label3="Total Footfalls"
+            ></app-engagement-metrics>
+            <!-- <app-pie-chart></app-pie-chart> -->
+          </div>
+        </div>
+        <div class="border border-[#FFFFFF2B] rounded-2xl px-6 py-8">
+          <app-uptime></app-uptime>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

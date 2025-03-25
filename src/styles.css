@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: "Inter", sans-serif !important;
+}
+
+body {
+    background-color: #1E1E1E;
+}
+
+button {
+    cursor: pointer;
+}

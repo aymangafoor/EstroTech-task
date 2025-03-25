@@ -1,0 +1,116 @@
+<div class="bg-[#1E1E1E]">
+  <app-header></app-header>
+  <div class="px-[8%]">
+    <h1 class="text-lg text-white py-8">Dashboard</h1>
+    <div class="flex items-center justify-between">
+      <div class="w-3/4 p-6 border rounded-xl border-[#FFFFFF2B]">
+        <app-chart></app-chart>
+      </div>
+      <div class="w-[24%] h-auto p-6 border rounded-xl border-[#FFFFFF2B]">
+        <app-pie-chart></app-pie-chart>
+      </div>
+    </div>
+    <div class="flex justify-between mt-4 mb-20">
+      <div class="w-[49%] border border-[#FFFFFF2B] rounded-2xl p-6">
+        <app-engagement-metrics
+          label1="Data 1"
+          label2="Data 0"
+          label3="Data 2"
+        ></app-engagement-metrics>
+      </div>
+      <div class="w-[24%] border border-[#FFFFFF2B] rounded-2xl p-4 pt-0">
+        <p
+          class="flex items-center justify-between text-sm font-medium text-white h-12"
+        >
+          <span>Device Acitvity</span>
+          <svg
+            width="16"
+            height="20"
+            viewBox="0 0 16 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.1625 10.675V2.85L1.125 5.8875L0.125 4.875L4.8875 0.125L9.6375 4.8625L8.6375 5.875L5.6 2.85V10.675H4.1625ZM11.125 19.875L6.375 15.125L7.375 14.1125L10.4125 17.15V9.325H11.85V17.15L14.875 14.1125L15.875 15.125L11.125 19.875Z"
+              fill="white"
+            />
+          </svg>
+        </p>
+        @for(item of device_active; track item.deviceName){
+        <div class="border-b border-[#3C3B3E] pb-2 mb-2">
+          <p class="flex justify-between text-sm font-medium text-white py-2">
+            <span>{{ item.deviceName }}</span>
+            <span>{{ item.hw_data.battery.percentage.replace("%", "") }}</span>
+          </p>
+          <table class="flex flex-col gap-y-2">
+            <tbody>
+              <tr class="text-xs flex text-[#9999A1] pb-2">
+                <td>Store</td>
+                <td>: {{ item.storeName }}</td>
+              </tr>
+              <tr class="text-xs flex text-[#9999A1] pb-2">
+                <td>City</td>
+                <td>: {{ item.location.city }}</td>
+              </tr>
+              <tr class="text-xs flex text-[#9999A1] pb-2">
+                <td>PoC</td>
+                <td>: {{ item.poc }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        }
+      </div>
+      <div class="w-[24%] border border-[#FFFFFF2B] rounded-2xl p-4 pt-0">
+        <p
+          class="flex items-center justify-between text-sm font-medium text-white h-12"
+        >
+          <span>Offline Devices</span>
+          <svg
+            width="16"
+            height="20"
+            viewBox="0 0 16 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.1625 10.675V2.85L1.125 5.8875L0.125 4.875L4.8875 0.125L9.6375 4.8625L8.6375 5.875L5.6 2.85V10.675H4.1625ZM11.125 19.875L6.375 15.125L7.375 14.1125L10.4125 17.15V9.325H11.85V17.15L14.875 14.1125L15.875 15.125L11.125 19.875Z"
+              fill="white"
+            />
+          </svg>
+        </p>
+        <div class="overflow-y-auto">
+          @for(item of off_device; track item.deviceName){
+          <div class="border-b border-[#3C3B3E] pb-2 mb-2">
+            <p class="text-sm font-medium text-white py-2">
+              {{ item.deviceName }}
+            </p>
+            <p class="last_seen text-xs text-[#9999A1] mb-2">
+              Last Seen on {{ formatDate(item.connectionStatus.disconnected) }}
+            </p>
+            <p class="last_seen text-xs text-[#9999A1] mb-2">
+              {{ dateDiff(item.connectionStatus.disconnected) }}
+            </p>
+            <table class="flex flex-col gap-y-2">
+              <tbody>
+                <tr class="text-xs flex text-[#9999A1] pb-2">
+                  <td>Store</td>
+                  <td>: {{ item.storeName }}</td>
+                </tr>
+                <tr class="text-xs flex text-[#9999A1] pb-2">
+                  <td>City</td>
+                  <td>: {{ item.location.city }}</td>
+                </tr>
+                <tr class="text-xs flex text-[#9999A1] pb-2">
+                  <td>PoC</td>
+                  <td>: {{ item.poc }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

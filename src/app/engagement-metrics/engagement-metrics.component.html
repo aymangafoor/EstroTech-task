@@ -1,0 +1,41 @@
+<div class="">
+  <p class="text-sm mb-5 text-white font-medium">Engagement Metrics</p>
+  <div class="">
+    <div class="chart-wrapper flex flex-col gap-y-5">
+      @if(label1){
+      <p class="text-xs text-white font-medium mb-5">{{ label1 }}</p>
+      } @else {
+      <p class="text-xs text-white font-medium mb-5">Data 1</p>
+      }
+      <div
+        id="chartContainer"
+        class="chart-container h-10 pb-5 border-b border-[#3C3B3E]"
+      >
+        <div class="h-10">
+          <canvas id="progressChart"></canvas>
+        </div>
+      </div>
+      @if(label2){
+      <p class="text-xs text-white font-medium mb-5">{{ label2 }}</p>
+      } @else {
+      <p class="text-xs text-white font-medium mb-5">Data 0</p>
+      }
+      <div
+        id="chartContainer1"
+        class="chart-container pb-5 border-b border-[#3C3B3E]"
+      >
+        <div class="h-10">
+          <canvas id="progressChart1"></canvas>
+        </div>
+      </div>
+      <div class="flex justify-between text-sm text-[#26A2E9]">
+        @if(label3){
+        <p>{{ label3 }}</p>
+        } @else{
+        <p>Data 2</p>
+        }
+        <p>100</p>
+      </div>
+    </div>
+  </div>
+</div>
