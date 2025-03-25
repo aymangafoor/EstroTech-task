@@ -106,14 +106,55 @@
       @if(tab==='analytics'){
       <div>
         <div class="flex">
-          <div
-            class="ml-auto border border-[#FFFFFF2D] justify-end mt-4 p-1.5 text-white rounded-lg"
-          >
-            <input
+          <div class="ml-auto mt-4 justify-end">
+            <!-- <input
               type="date"
               [value]="{date}"
               class="outline-0 focus:outline-0"
-            />
+            /> -->
+            <div class="relative w-fit">
+              <!-- Custom Datepicker Button -->
+              <button
+                class="flex items-center z-10 gap-2 bg-[#1E1E1E] text-white py-2 px-4 rounded-xl border border-[#FFFFFF2D]"
+                (click)="dateInput.showPicker()"
+              >
+                <svg
+                  width="15"
+                  height="14"
+                  viewBox="0 0 15 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <mask
+                    id="mask0_1_33"
+                    style="mask-type: alpha"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="15"
+                    height="14"
+                  >
+                    <rect x="0.5" width="14" height="14" fill="#D9D9D9" />
+                  </mask>
+                  <g mask="url(#mask0_1_33)">
+                    <path
+                      d="M3.15397 12.7603C2.93065 12.7603 2.73509 12.6763 2.56728 12.5084C2.39938 12.3406 2.31543 12.145 2.31543 11.9217V2.9384C2.31543 2.71508 2.39938 2.51951 2.56728 2.35171C2.73509 2.18381 2.93065 2.09985 3.15397 2.09985H4.13835V1.66965C4.13835 1.54792 4.18185 1.44336 4.26887 1.35596C4.35588 1.26855 4.46185 1.22485 4.58678 1.22485C4.7158 1.22485 4.82522 1.26855 4.91506 1.35596C5.00489 1.44336 5.0498 1.54792 5.0498 1.66965V2.09985H9.94981V1.66965C9.94981 1.54792 9.99331 1.44336 10.0803 1.35596C10.1673 1.26855 10.2733 1.22485 10.3982 1.22485C10.5274 1.22485 10.6368 1.26855 10.7265 1.35596C10.8163 1.44336 10.8613 1.54792 10.8613 1.66965V2.09985H11.8456C12.069 2.09985 12.2645 2.18381 12.4323 2.35171C12.6002 2.51951 12.6842 2.71508 12.6842 2.9384V11.9217C12.6842 12.145 12.6002 12.3406 12.4323 12.5084C12.2645 12.6763 12.069 12.7603 11.8456 12.7603H3.15397ZM3.15397 11.9217H11.8456V5.70194H3.15397V11.9217ZM3.15397 4.8634H11.8456V2.9384H3.15397V4.8634Z"
+                      fill="white"
+                    />
+                  </g>
+                </svg>
+                <span class="text-sm/4 font-medium">{{ selectedDate }}</span>
+              </button>
+
+              <!-- Hidden Native Date Input -->
+              <input
+                type="date"
+                #dateInput
+                id="dateInput"
+                class="absolute top-7 left-0 opacity-0 w-full h-full cursor-pointer"
+                (change)="onDateChange($event)"
+              />
+            </div>
           </div>
         </div>
         <div class="flex justify-between my-4">

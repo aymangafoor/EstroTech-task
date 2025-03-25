@@ -23,14 +23,29 @@ export class SingleDeviceComponent {
   data: any;
   date: Date = new Date();
   tab: string = 'analytics';
+  selectedDate: string = '';
   constructor(private route: ActivatedRoute) {
     this.name = this.route.snapshot.paramMap.get('name') || '';
     console.log('route is: ', this.name);
     this.data = jsonData.find(
       (x: any) => x.deviceName.toLowerCase() == this.name
     );
+    this.selectedDate = this.formatDate(new Date());
   }
   changetab(value: string) {
     this.tab = value;
+  }
+  onDateChange(event: any) {
+    const dateValue = event.target.value;
+    this.selectedDate = this.formatDate(new Date(dateValue));
+  }
+
+  formatDate(date: Date): string {
+    return date.toLocaleDateString('en-GB', {
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    });
   }
 }
