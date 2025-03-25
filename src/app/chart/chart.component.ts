@@ -1,5 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import data0 from '../../assets/data_0.json';
+import data1 from '../../assets/data_1.json';
 
 Chart.register(...registerables);
 
@@ -13,202 +15,6 @@ export class ChartComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.generateChart();
   }
-  data0 = [
-    {
-      hour: 0,
-      data: 10,
-    },
-    {
-      hour: 1,
-      data: 30,
-    },
-    {
-      hour: 2,
-      data: 50,
-    },
-    {
-      hour: 3,
-      data: 10,
-    },
-    {
-      hour: 4,
-      data: 30,
-    },
-    {
-      hour: 5,
-      data: 50,
-    },
-    {
-      hour: 6,
-      data: 10,
-    },
-    {
-      hour: 7,
-      data: 30,
-    },
-    {
-      hour: 8,
-      data: 50,
-    },
-    {
-      hour: 9,
-      data: 10,
-    },
-    {
-      hour: 10,
-      data: 30,
-    },
-    {
-      hour: 11,
-      data: 50,
-    },
-    {
-      hour: 12,
-      data: 10,
-    },
-    {
-      hour: 13,
-      data: 30,
-    },
-    {
-      hour: 14,
-      data: 50,
-    },
-    {
-      hour: 15,
-      data: 10,
-    },
-    {
-      hour: 16,
-      data: 30,
-    },
-    {
-      hour: 17,
-      data: 50,
-    },
-    {
-      hour: 18,
-      data: 10,
-    },
-    {
-      hour: 19,
-      data: 30,
-    },
-    {
-      hour: 20,
-      data: 50,
-    },
-    {
-      hour: 21,
-      data: 10,
-    },
-    {
-      hour: 22,
-      data: 30,
-    },
-    {
-      hour: 23,
-      data: 50,
-    },
-  ];
-  data1 = [
-    {
-      hour: 0,
-      data: 10,
-    },
-    {
-      hour: 1,
-      data: 30,
-    },
-    {
-      hour: 2,
-      data: 50,
-    },
-    {
-      hour: 3,
-      data: 10,
-    },
-    {
-      hour: 4,
-      data: 30,
-    },
-    {
-      hour: 5,
-      data: 50,
-    },
-    {
-      hour: 6,
-      data: 10,
-    },
-    {
-      hour: 7,
-      data: 30,
-    },
-    {
-      hour: 8,
-      data: 50,
-    },
-    {
-      hour: 9,
-      data: 10,
-    },
-    {
-      hour: 10,
-      data: 30,
-    },
-    {
-      hour: 11,
-      data: 50,
-    },
-    {
-      hour: 12,
-      data: 10,
-    },
-    {
-      hour: 13,
-      data: 30,
-    },
-    {
-      hour: 14,
-      data: 50,
-    },
-    {
-      hour: 15,
-      data: 10,
-    },
-    {
-      hour: 16,
-      data: 30,
-    },
-    {
-      hour: 17,
-      data: 50,
-    },
-    {
-      hour: 18,
-      data: 10,
-    },
-    {
-      hour: 19,
-      data: 30,
-    },
-    {
-      hour: 20,
-      data: 50,
-    },
-    {
-      hour: 21,
-      data: 10,
-    },
-    {
-      hour: 22,
-      data: 30,
-    },
-    {
-      hour: 23,
-      data: 50,
-    },
-  ];
   generateChart() {
     const bigData = this.generateBigData();
     const data_0 = this.generateData0();
@@ -273,10 +79,21 @@ export class ChartComponent implements AfterViewInit {
           },
         },
         scales: {
-          x: { display: false, grid: { display: false } },
+          x: {
+            display: true,
+            grid: {
+              display: false,
+              color: '#6E7079',
+              tickLength: 1,
+              tickWidth: 1,
+            },
+            min: 0,
+            max: 24,
+            ticks: { stepSize: 1 },
+          },
           y: {
             display: true,
-            grid: { color: '#E0E6F1' },
+            grid: { color: '#6E7079' },
             min: 0,
             max: 250,
             ticks: { stepSize: 50 },
@@ -286,13 +103,13 @@ export class ChartComponent implements AfterViewInit {
     });
   }
   generateData0() {
-    return this.data0.map((x) => x.data);
+    return data0.map((x) => x.data);
   }
   generateData1() {
-    return this.data1.map((x) => x.data);
+    return data1.map((x) => x.data);
   }
   generateBigData() {
-    return this.data0.map((x, i) => x.data + this.data1[i].data);
+    return data0.map((x, i) => x.data + data1[i].data);
   }
   downloadChart() {
     const canvas = document.getElementById('bigDataChart') as HTMLCanvasElement;

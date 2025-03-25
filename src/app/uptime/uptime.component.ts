@@ -76,6 +76,7 @@ export class UptimeComponent implements AfterViewInit {
               tickColor: 'white',
               tickLength: 8,
             },
+            min: 0,
             max: 24,
           },
           y: {
