@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import jsonData from '../../assets/deviceData.json';
 import { HeaderComponent } from '../header/header.component';
 import { ChartComponent } from '../chart/chart.component';
-import { PieChartComponent } from '../pie-chart/pie-chart.component';
 import { EngagementMetricsComponent } from '../engagement-metrics/engagement-metrics.component';
 import { UptimeComponent } from '../uptime/uptime.component';
 
@@ -14,6 +13,7 @@ import { UptimeComponent } from '../uptime/uptime.component';
     ChartComponent,
     EngagementMetricsComponent,
     UptimeComponent,
+    RouterLink,
   ],
   templateUrl: './single-device.component.html',
   styleUrl: './single-device.component.css',
